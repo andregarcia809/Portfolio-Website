@@ -10,38 +10,40 @@ const watch = require('gulp-watch');
 //Styles Task
 //compiles sass, adds prefixers, minifies css
 gulp.task('style', function () {
-   return gulp.src('./src/sass/**/*.scss')
+  return gulp.src('./src/sass/**/*.scss')
     .pipe(sass().on('error', sass.logError))
     .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
+      browsers: ['last 2 versions'],
+      cascade: false
     }))
-    .pipe(cleanCss({compatibility: 'ie8'}))
+    .pipe(cleanCss({
+      compatibility: 'ie8'
+    }))
     .pipe(gulp.dest('./public/css'));
 });
 // Images min Task
-gulp.task('image',  function () {
-    return gulp.src('./src/img/**')
+gulp.task('image', function () {
+  return gulp.src('./src/img/**')
     .pipe(imagemin())
     .pipe(gulp.dest('./public/img'))
 });
 
 // Scripts Task
-// Uglyfies (minifies)
+// Uglyfies(minifies)
 gulp.task('script', function (cb) {
-    pump([
-          gulp.src('./src/js/**/*.js'),
-          uglify(),
-          gulp.dest('./public/js/')
-      ],
-      cb
-    );
-  });
+  pump([
+      gulp.src('./src/js/**/*.js'),
+      uglify(),
+      gulp.dest('./public/js/')
+    ],
+    cb
+  );
+});
 
 // Watch Task
 // Watches Js
 gulp.task('watch', function () {
-    gulp.watch('./src/js/**/*.js', ['script']),
+  gulp.watch('./src/js/**/*.js', ['script']),
     gulp.watch('./src/sass/**/*.scss', ['style']),
     gulp.watch('./src/img/', ['image'])
 });
