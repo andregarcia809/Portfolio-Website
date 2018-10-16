@@ -1,3 +1,8 @@
+    <?php
+    /** Validates form */
+
+      Require "php/contact-form.php";
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -166,26 +171,24 @@
         <i></i>
       </span>
       <div class="portfolio__wrapper">
-        <div class="portfolio__img__group">
+      <div class="portfolio__img__group">
           <div class="portfolio__img__container">
-            <img src="img/Restaurant.png" alt="portfolio">
+            <img src="img/real-estate.PNG" alt="portfolio">
             <div class="portfolio__img__info">
               <div class="content__box">
                 <div class="close__portfolio__img__info">X</div>
-                <h3>Template of a Restaurant<br> Website</h3>
+                <h3>Real Estate Agency<br> Template</h3>
                 <div class="portofolio__img__info__technologies">
                   <h6>technologies use:</h6>
                   <div class="technologies__wrap">
-                    <i class="fab fa-gulp"></i>
-                    <i class="fab fa-html5"></i>
-                    <i class="fab fa-sass"></i>
-                    <img src="img/hyperapp.png" alt="">
+                  <i class="fab fa-wordpress"></i>
+                  <i class="fab fa-elementor"></i>
                   </div>
                 </div>
                 <div class="content__wrap">
-                  <a href="http://andresgarcia809.com/Restaurant/"><i class="fas fa-link"></i></a>
+                  <a href="http://andresgarcia809.com/wordpress-site/"><i class="fas fa-link"></i></a>
                   <span> |</span>
-                  <a href="https://github.com/andregarcia809/Restaurant-Website"><i class="fas fa-search-plus"></i></a>
+                  <a href="https://github.com/andregarcia809"><i class="fas fa-search-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -193,7 +196,7 @@
         </div>
         <div class="portfolio__img__group group2">
           <div class="portfolio__img__container">
-            <img src="img/Djpabel.png" alt="portfolio">
+            <img src="img/Djpabel.PNG" alt="portfolio">
             <div class="portfolio__img__info info2">
               <div class="content__box">
                 <div class="close__portfolio__img__info close2">X</div>
@@ -220,15 +223,48 @@
         </div>
         <div class="portfolio__img__group group3">
           <div class="portfolio__img__container">
-            <img src="img/p2.jpg" alt="portfolio">
+            <img src="img/html-email.PNG" alt="portfolio">
             <div class="portfolio__img__info info3">
               <div class="content__box">
                 <div class="close__portfolio__img__info close3">X</div>
-                <h3>Coming Soon</h3>
+                <h3>Html-Email Template</h3>
+                <div class="portofolio__img__info__technologies">
+                  <h6>technologies use:</h6>
+                  <div class="technologies__wrap">
+                    <i class="fab fa-gulp"></i>
+                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-css3"></i>
+                  </div>
+                </div>
                 <div class="content__wrap">
-                  <a href="#"><i class="fas fa-link"></i></a>
+                  <a href="http://andresgarcia809.com/html-email/"><i class="fas fa-link"></i></a>
                   <span>|</span>
                   <a href="https://github.com/andregarcia809"><i class="fas fa-search-plus"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="portfolio__img__group group4">
+          <div class="portfolio__img__container">
+            <img src="img/Restaurant.PNG" alt="portfolio">
+            <div class="portfolio__img__info info4">
+              <div class="content__box">
+                <div class="close__portfolio__img__info">X</div>
+                <h3>Template of a Restaurant<br> Website</h3>
+                <div class="portofolio__img__info__technologies">
+                  <h6>technologies use:</h6>
+                  <div class="technologies__wrap">
+                    <i class="fab fa-gulp"></i>
+                    <i class="fab fa-html5"></i>
+                    <i class="fab fa-sass"></i>
+                    <img src="img/hyperapp.png" alt="">
+                  </div>
+                </div>
+                <div class="content__wrap">
+                  <a href="http://andresgarcia809.com/Restaurant/"><i class="fas fa-link"></i></a>
+                  <span> |</span>
+                  <a href="https://github.com/andregarcia809/Restaurant-Website"><i class="fas fa-search-plus"></i></a>
                 </div>
               </div>
             </div>
@@ -334,6 +370,7 @@
       </div>
     </section>
     <!--Contact-->
+
     <section id="contact__section">
       <h1><span>Contact</span> Me</h1>
       <span class="heading__design">
@@ -342,16 +379,21 @@
         <i></i>
       </span>
       <h3>Please fill out the quick form and I will be in touch with you in lightning speed.</h3>
-      <div class="alert">Your message has been sent.</div>
       <div class="form__wrapper">
-        <form id="contact__form" action="" method="post">
-          <input id="name" type="text" placeholder="Name" required>
-          <input id="email" type="text" placeholder="Email" required>
-          <input id="subject" type="text" placeholder="subject" required>
-          <textarea id="message" cols="0" rows="10" placeholder="message" required></textarea>
+        <form id="contact__form" method="post" action="<?php htmlspecialchars($_SERVER["PHP_SELF"]);?> ">
+          <input name="name"  type="text" placeholder="Name">
+          <span id="name__error" class="error"> <?php echo $name_error; ?></span>
+          <input name="email"  type="text" placeholder="Email">
+          <span id="email__error" class="error"><?php echo $email_error; ?></span>
+          <input id="subject" name="subject"  type="text" placeholder="subject">
+          <input name="tel"  type="text" placeholder="(xxx)-xxx-xxxx">
+          <span id="subject__error"class="error"><?php echo $subject_error; ?></span>
+          <textarea id="message" name="message"  cols="0" rows="10" placeholder="Your Projects Idea Here..."></textarea>
+          <span id="message__error" class="error"><?php echo $message_error; ?></span>
           <div class="form__btn__wrap">
-            <button id=form__Btn type="submit">Submit</button>
+            <button id=form__Btn name="submit" type="submit">Submit</button>
           </div>
+          <div class="success"><?php echo $mailSent; ?></div>
         </form>
       </div>
 
@@ -377,9 +419,7 @@
       </div>
     </footer>
   </div class="wrap">
-  <script src="https://www.gstatic.com/firebasejs/5.4.2/firebase.js"></script>
   <script src="js/app.js"></script>
-  <script src="js/formValidation.js"></script>
 </body>
 
 </html>
